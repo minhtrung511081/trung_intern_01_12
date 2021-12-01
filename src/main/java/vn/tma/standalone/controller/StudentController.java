@@ -26,4 +26,6 @@ public class StudentController {
     public Object save(@RequestBody StudentDTO studentDTO) {
         return studentService.save(studentDTO);
     }
+
+
 }
