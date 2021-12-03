@@ -45,8 +45,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/quan-tri/trang-chu").access("hasAnyAuthority('ADMIN')");
         http.authorizeRequests().antMatchers("/trang-chu").access("hasAnyAuthority('USER')");
 
-
-
         http.authorizeRequests().and().formLogin()
                 .loginProcessingUrl("/j_spring_security_check")
                 .loginPage("/dang-nhap")
@@ -55,6 +53,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .usernameParameter("j_username")
                 .passwordParameter("j_password");
     }
-
 
 }

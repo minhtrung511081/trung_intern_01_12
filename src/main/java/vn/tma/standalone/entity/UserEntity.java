@@ -9,8 +9,6 @@ import java.util.List;
 @Entity
 @Table(name = "account")
 @Getter @Setter
-@ToString(exclude = "roles")
-@EqualsAndHashCode(exclude = "roles")
 public class UserEntity extends BaseEntity{
     @Column(name = "username")
     private String userName;

@@ -1,6 +1,7 @@
 package vn.tma.standalone.entity;
 
 import lombok.Data;
+import org.springframework.data.elasticsearch.annotations.Document;
 
 import java.sql.Date;
 
