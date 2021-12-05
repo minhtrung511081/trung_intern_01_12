@@ -5,8 +5,9 @@ import org.springframework.stereotype.Repository;
 import vn.tma.standalone.entity.Customer;
 import vn.tma.standalone.entity.StudentEntity;
 
+import java.awt.print.Book;
 import java.util.List;
 
-public interface StudentEsRepository extends ElasticsearchRepository<Customer,String> {
-    List<Customer> findByName(String name);
+public interface EsRepository extends ElasticsearchRepository<Customer,String> {
+
 }

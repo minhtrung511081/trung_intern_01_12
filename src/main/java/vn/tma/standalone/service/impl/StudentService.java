@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 
 import vn.tma.standalone.converter.StudentCoverter;
 import vn.tma.standalone.dto.StudentDTO;
+import vn.tma.standalone.entity.Customer;
 import vn.tma.standalone.entity.StudentEntity;
+import vn.tma.standalone.repository.EsRepository;
 import vn.tma.standalone.repository.StudentRepository;
 import vn.tma.standalone.service.IStudentService;
 
@@ -20,6 +22,9 @@ public class StudentService implements IStudentService {
 
     @Autowired
     private StudentCoverter coverter;
+
+    @Autowired
+    private EsRepository esRepository;
 
     @Override
     public Object getAll() {
@@ -35,7 +40,12 @@ public class StudentService implements IStudentService {
     @Override
     public Object save(StudentDTO dto) {
         StudentEntity entity = coverter.toEntity(dto);
-        return studentRepository.save(entity);
+        Customer customer = new Customer();
+        customer.setName(entity.getName());
+        customer.setAddress(entity.getCode());
+        StudentEntity  studentEntity=  studentRepository.save(entity);
+        customer.setId(String.valueOf(studentEntity.getId()));
+        return  esRepository.save(customer);
     }
 
 
