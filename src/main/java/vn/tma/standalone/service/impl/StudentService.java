@@ -3,50 +3,84 @@ package vn.tma.standalone.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import vn.tma.standalone.converter.StudentCoverter;
 import vn.tma.standalone.dto.StudentDTO;
 import vn.tma.standalone.entity.Customer;
 import vn.tma.standalone.entity.StudentEntity;
+import vn.tma.standalone.exception.BadRequestException;
+import vn.tma.standalone.repository.CollegeRepository;
 import vn.tma.standalone.repository.EsRepository;
 import vn.tma.standalone.repository.StudentRepository;
 import vn.tma.standalone.service.IStudentService;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Service
 public class StudentService implements IStudentService {
 
-    @Autowired
     private StudentRepository studentRepository;
 
-    @Autowired
-    private StudentCoverter coverter;
+    private StudentCoverter studentCoverter;
+
+    private CollegeRepository collegeRepository;
 
     @Autowired
     private EsRepository esRepository;
+
+    @Autowired
+    public StudentService(StudentRepository studentRepository,
+                          StudentCoverter studentCoverter,
+                          CollegeRepository collegeRepository
+                          ) {
+        this.studentRepository = studentRepository;
+        this.studentCoverter = studentCoverter;
+        this.collegeRepository = collegeRepository;
+    }
 
     @Override
     public Object getAll() {
         Iterable<StudentEntity> entities = studentRepository.findAll();
         List<StudentDTO> dtos = new ArrayList<>();
         for (StudentEntity studentEntity : entities) {
-            StudentDTO dto = coverter.toDto(studentEntity);
+            StudentDTO dto = studentCoverter.toDto(studentEntity);
             dtos.add(dto);
         }
         return dtos;
     }
 
     @Override
-    public Object save(StudentDTO dto) {
-        StudentEntity entity = coverter.toEntity(dto);
-        Customer customer = new Customer();
-        customer.setName(entity.getName());
-        customer.setAddress(entity.getCode());
-        StudentEntity  studentEntity=  studentRepository.save(entity);
-        customer.setId(String.valueOf(studentEntity.getId()));
-        return  esRepository.save(customer);
+    public StudentEntity saveTestH2(StudentEntity studentEntity) {
+        Boolean existsEmail = studentRepository.selectExistsEmail(studentEntity.getEmail());
+        if (existsEmail) {
+            throw new BadRequestException(
+                    "Email " + studentEntity.getEmail() + " taken");
+        }
+        return  studentRepository.save(studentEntity);
     }
+
+
+    @Override
+    public Object saveEs(Customer customer){
+        return esRepository.save(customer);
+    }
+
+    @Override
+    public StudentDTO saveStudentReal(StudentDTO studentDTO) {
+        Boolean existsEmail = studentRepository.selectExistsEmail(studentDTO.getEmail());
+        if (existsEmail) {
+            throw new BadRequestException(
+                    "Email " + studentDTO.getEmail() + " taken");
+        }
+        StudentEntity studentEntity = studentCoverter.toEntity(studentDTO);
+        studentEntity.setCollegeid(collegeRepository.findByCode(studentDTO.getCodeCollege()));
+
+        return  studentCoverter.toDto(studentRepository.save(studentEntity));
+    }
+
 
 
 }

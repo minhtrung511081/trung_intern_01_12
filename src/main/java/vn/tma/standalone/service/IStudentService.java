@@ -1,9 +1,15 @@
 package vn.tma.standalone.service;
 
 import vn.tma.standalone.dto.StudentDTO;
+import vn.tma.standalone.entity.Customer;
+import vn.tma.standalone.entity.StudentEntity;
 
 public interface IStudentService {
     Object getAll();
 
-    Object save(StudentDTO dto);
+    StudentEntity saveTestH2(StudentEntity studentEntity);
+
+    Object saveEs(Customer customer);
+
+    StudentDTO saveStudentReal(StudentDTO studentDTO);
 }

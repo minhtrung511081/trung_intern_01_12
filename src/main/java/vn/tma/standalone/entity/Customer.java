@@ -14,7 +14,6 @@ import org.springframework.data.elasticsearch.annotations.FieldType;
 
 public class Customer {
 
-
     private String id;
 
     @Field(name = "name", type = FieldType.Text)
