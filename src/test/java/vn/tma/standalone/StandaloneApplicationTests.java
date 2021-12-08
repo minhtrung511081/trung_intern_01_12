@@ -1,17 +1,16 @@
 package vn.tma.standalone;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootTest;
-import vn.tma.standalone.entity.StudentEntity;
-import vn.tma.standalone.service.impl.StudentService;
-
-import java.util.List;
+import org.springframework.test.context.TestPropertySource;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 
 @SpringBootTest
+@TestPropertySource(
+        locations = "classpath:application-real.properties"
+)
 class StandaloneApplicationTests {
 
     @Test

@@ -2,11 +2,13 @@ package vn.tma.standalone.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import vn.tma.standalone.converter.StudentCoverter;
 import vn.tma.standalone.dto.StudentDTO;
 import vn.tma.standalone.entity.Customer;
@@ -14,8 +16,10 @@ import vn.tma.standalone.entity.StudentEntity;
 import vn.tma.standalone.exception.BadRequestException;
 import vn.tma.standalone.repository.CollegeRepository;
 import vn.tma.standalone.repository.EsRepository;
+import vn.tma.standalone.repository.StudentNewRepository;
 import vn.tma.standalone.repository.StudentRepository;
 import vn.tma.standalone.service.IStudentService;
+
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -27,6 +31,9 @@ public class StudentService implements IStudentService {
     private StudentCoverter studentCoverter;
 
     private CollegeRepository collegeRepository;
+
+    @Autowired
+    private StudentNewRepository studentNewRepository;
 
     @Autowired
     private EsRepository esRepository;
@@ -69,6 +76,14 @@ public class StudentService implements IStudentService {
     }
 
     @Override
+    @Transactional
+    public Object findStudentByEmail(String email) {
+        Optional<StudentEntity> studentEntity = studentNewRepository.findStudentByEmail(email);
+        return studentEntity;
+    }
+
+    @Override
+    @Transactional
     public StudentDTO saveStudentReal(StudentDTO studentDTO) {
         Boolean existsEmail = studentRepository.selectExistsEmail(studentDTO.getEmail());
         if (existsEmail) {

@@ -12,11 +12,14 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import vn.tma.standalone.dto.StudentDTO;
 import vn.tma.standalone.entity.StudentEntity;
+import vn.tma.standalone.repository.StudentNewRepository;
 import vn.tma.standalone.repository.StudentRepository;
 import com.github.javafaker.Faker;
 import vn.tma.standalone.service.impl.StudentService;
 
 import java.util.List;
+import java.util.Optional;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -36,6 +39,9 @@ public class StudentTestReal {
 
     @Autowired
     private StudentRepository studentRepository;
+
+    @Autowired
+    private StudentNewRepository studentNewRepository;
 
     @Autowired
     private StudentService studentService;
@@ -64,5 +70,18 @@ public class StudentTestReal {
         resultActions.andExpect(status().isOk());
         List<StudentDTO> students = (List<StudentDTO>) studentService.getAll();
         System.out.println(students);
+    }
+
+    @Test
+    void canGetStudentByMail() throws Exception{
+        String email = "trung98@gmail.com";
+        Optional<StudentEntity> studentEntity = studentNewRepository.findStudentByEmail(email);
+        System.out.println(studentEntity);
+    }
+
+    @Test
+    void canGetAll() throws Exception{
+        List<StudentEntity> studentEntities = studentNewRepository.findAll();
+        System.out.println(studentEntities);
     }
 }

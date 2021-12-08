@@ -11,5 +11,7 @@ public interface IStudentService {
 
     Object saveEs(Customer customer);
 
+    Object findStudentByEmail(String email);
+
     StudentDTO saveStudentReal(StudentDTO studentDTO);
 }
