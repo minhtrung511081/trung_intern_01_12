@@ -16,7 +16,7 @@ class StudentRepositoryTest {
 
     @Test
     public void itShouldCheckWhenStudentEmailExists(){
-        StudentEntity studentEntity = new StudentEntity("b1610", "trung",null,"trung98@gmail.com",null);
+        StudentEntity studentEntity = new StudentEntity("b1610", "trung","trung98@gmail.com",null);
         studentRepository.save(studentEntity);
         boolean expected = studentRepository.selectExistsEmail("trung98@gmail.com");
         assertThat(expected).isTrue();

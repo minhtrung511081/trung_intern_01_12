@@ -29,4 +29,11 @@ public class StudentCoverter {
         return entity;
     }
 
+    public StudentEntity toEntity(StudentEntity result, StudentDTO dto) {
+        result.setName(dto.getName());
+        result.setCode(dto.getCode());
+        result.setEmail(dto.getEmail());
+        return result;
+    }
+
 }

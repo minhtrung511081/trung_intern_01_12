@@ -10,6 +10,8 @@ import vn.tma.standalone.converter.StudentCoverter;
 import vn.tma.standalone.entity.StudentEntity;
 import vn.tma.standalone.exception.BadRequestException;
 import vn.tma.standalone.repository.CollegeRepository;
+import vn.tma.standalone.repository.EsRepository;
+import vn.tma.standalone.repository.StudentNewRepository;
 import vn.tma.standalone.repository.StudentRepository;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -32,11 +34,17 @@ class StudentServiceTest {
     @Mock
     private CollegeRepository collegeRepository;
 
+    @Mock
+    private StudentNewRepository studentNewRepository;
+
+    @Mock
+    private EsRepository esRepository;
+
     private StudentService underTest;
 
     @BeforeEach
     void setUp() {
-        underTest = new StudentService(studentRepository, studentCoverter, collegeRepository);
+        underTest = new StudentService(studentRepository, studentCoverter, collegeRepository, studentNewRepository);
     }
 
     @Test
@@ -52,7 +60,6 @@ class StudentServiceTest {
         StudentEntity studentEntity = new StudentEntity(
                 "b16",
                 "trung vo",
-                null,
                 "trung98@gmail.com",
                 null
         );
@@ -75,7 +82,6 @@ class StudentServiceTest {
         StudentEntity studentEntity = new StudentEntity(
                 "b16",
                 "trung vo",
-                null,
                 "trung98@gmail.com",
                 null
         );

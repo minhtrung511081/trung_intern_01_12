@@ -12,10 +12,9 @@ import javax.persistence.*;
 @Table(name = "student")
 @Getter @Setter @ToString
 @AllArgsConstructor @NoArgsConstructor
-public class StudentEntity extends BaseEntity  implements Serializable {
+public class StudentEntity extends BaseEntity{
     private String code;
     private String name;
-    private Date dateOfBirth;
 
     @Column(name = "email")
     private String email;

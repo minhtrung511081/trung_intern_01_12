@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.Query;
 import vn.tma.standalone.entity.UserEntity;
 
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
-    UserEntity findOneByUserNameAndStatus(String name, int status);
+    UserEntity findByUserNameAndStatus(String name, int status);
 }

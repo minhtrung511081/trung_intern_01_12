@@ -16,11 +16,8 @@ import vn.tma.standalone.repository.StudentNewRepository;
 import vn.tma.standalone.repository.StudentRepository;
 import com.github.javafaker.Faker;
 import vn.tma.standalone.service.impl.StudentService;
-
 import java.util.List;
 import java.util.Optional;
-
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -55,7 +52,6 @@ public class StudentTestReal {
         StudentDTO studentDTO = new StudentDTO(
                 "b162",
                 "trung ",
-                null,
                 null,
                 "cntt",
                 "trung989@gmail.com"

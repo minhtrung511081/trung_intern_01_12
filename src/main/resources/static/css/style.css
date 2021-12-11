@@ -1,0 +1,170 @@
+form{
+	border: solid aqua 1px;
+	padding: 10px 10px 10px 10px;
+	position: absolute;
+	left: 30%;
+	right:30%;
+	top:20%;
+	bottom:30%;
+	display:inline;
+	background-color:#696969;
+	width:440px;
+	height:440px;
+}
+form>p{
+	color:white;
+	text-align:center;
+}
+form>h1{
+	color: aqua;
+	margin: 0px 0px 10px 0px;
+	text-align:center;
+	display:inline;
+	position: relative;
+	left: 10%;
+	right:30%;
+}
+table{
+	margin:10px 0px 0px 0px;
+	border:1px solid pink;
+	background-color:#C0C0C0;
+}
+tr{
+	height: 40px;
+	border:1px solid yellow;
+}
+td{
+	
+	width:150px;
+}
+
+html{
+	background:url(anhnen.jpg);
+}
+#user{
+	
+	border: 1px solid aqua;
+	position:relative;
+	top: 30%;
+	right:10%;
+	left:25%;
+	bottom:10%;
+	width:700px;
+	height:330px;
+	margin-top:10%;
+	background-color:#696969;
+}
+#user>table{
+	border:solid #abcdef 1px;
+	float:right;
+	margin-right:100px;
+	margin-top:1px;
+	background-color:#C0C0C0;
+	border:1px solid pink;
+}
+#user>h1{
+	border-bottom: 1px solid aqua;
+	margin-top:0px;
+	padding: 5px 5px;
+	color:aqua;
+	text-align:center;
+	display:block;
+}
+img{
+	float: left;
+	margin-left:30px;
+}
+#login>form{
+	height:250px;
+}
+#login>form>table{
+	position:absolute;
+	top:60px;
+	left:50px;
+}
+#login1{
+	position:absolute;
+	bottom:20px;
+	text-align:center;
+	left:150px;
+}
+#cart{
+	border: 1px solid blue;
+}
+#cart>form{
+	border: 1px solid aqua;
+	height:315px;
+	width: 840px;
+}
+#cart>form>table{
+	border: 1px solid aqua;
+
+}
+th{
+	background-color:#000099;
+}
+
+#menu{
+	background:white;
+	
+	margin: 0px 10px 10px 10px;
+	float: left;
+	width:200px;
+	height:300px;
+	
+}
+
+#menu>h4{
+	color: white;
+	background:blue;
+	text-align:center;
+	margin: 0px 0px 0px 0px;
+	padding: 10px 0px 10px 0px;
+	
+}
+
+h4+ul{
+	padding: 0px 0px 0px 0px;
+	margin: 0px;
+	background-color:#87CEFF;
+}
+ul>li{
+	border-bottom:solid white 2px;
+	display:block;
+	padding : 5px 5px 5px 5px;
+	
+}
+
+ul>li:hover{
+	background-color:pink;
+}
+li>a{
+	text-decoration:none;
+	
+}
+#action{
+	border: 1px solid green;
+	position:absolute;
+	width:100px;
+	left:1000px;
+	top:80px;
+}
+#page{
+	border:1px solid yellow;
+}
+#pagination{
+	border:1px solid black;
+}
+
+#pagination>li{
+	border:1px solid purple;
+	display:inline;
+}
+#pagination>li>a{
+	position : relative;
+	color:aqua;
+	border:1px solid yellow;
+	display:inline;
+	height:10px;
+	width:100px;
+}

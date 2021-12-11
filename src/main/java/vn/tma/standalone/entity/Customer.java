@@ -11,7 +11,6 @@ import org.springframework.data.elasticsearch.annotations.FieldType;
 @Document(indexName = "student1")
 @Getter
 @Setter
-
 public class Customer {
 
     private String id;

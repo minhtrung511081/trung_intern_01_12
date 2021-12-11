@@ -13,23 +13,6 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 )
 class StandaloneApplicationTests {
 
-    @Test
-    void itShouldAddTwoNumbers(){
-        //given
-        int numberOne = 10;
-        int numberTwo = 20;
-        //when
-        int result = new Calculator().add(numberOne,numberTwo);
 
-        //then
-        int Expected=30;
-        assertThat(result).isEqualTo(Expected);
-    }
-
-    class Calculator{
-        int add(int a, int b){
-            return a+b;
-        }
-    }
 
 }

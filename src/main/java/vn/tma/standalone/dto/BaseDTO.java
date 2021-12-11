@@ -18,6 +18,7 @@ public class BaseDTO<T> {
 
     private String modifiedBy;
 
+    private Long ids[];
     List<T> listResult = new ArrayList<>();
 
 }

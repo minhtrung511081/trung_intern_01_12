@@ -12,7 +12,6 @@ import java.sql.Date;
 public class StudentDTO extends BaseDTO<StudentDTO> {
     private String code;
     private String name;
-    private Date dateOfbirth;
 
     private CollegeDTO collegeid;
 

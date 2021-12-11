@@ -19,16 +19,19 @@ import java.util.List;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
-    @Autowired
+
     private UserRepository userRepository;
 
-    @Autowired
     private RoleRepository roleRepository;
 
+    public CustomUserDetailsService(UserRepository userRepository, RoleRepository roleRepository){
+        this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
+    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserEntity userEntity = userRepository.findOneByUserNameAndStatus(username, SystemConstant.ACTIVE_STATUS);
+        UserEntity userEntity = userRepository.findByUserNameAndStatus(username, SystemConstant.ACTIVE_STATUS);
 
         if (userEntity == null) {
             throw new UsernameNotFoundException("User not found");

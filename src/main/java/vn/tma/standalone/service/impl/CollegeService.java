@@ -10,9 +10,11 @@ import vn.tma.standalone.service.ICollegeService;
 @Service
 public class CollegeService implements ICollegeService {
 
-
-    @Autowired
     private CollegeRepository collegeRepository;
+
+    public CollegeService(CollegeRepository collegeRepository) {
+        this.collegeRepository = collegeRepository;
+    }
 
     @Override
     public Object getAll() {
